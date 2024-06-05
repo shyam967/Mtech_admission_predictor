@@ -9,7 +9,7 @@ with open("graduate_adm_scalar.pkl", "rb") as f:
 with open("graduate_adm_model.pkl", 'rb') as f:
     saved_model = pickle.load(f)
 
-st.title('Graduate Admission Predictor')
+st.title('Graduate Admission Predictor by shyam')
 
 # Create input fields without predefined values
 gre = st.number_input('GRE Score (0 to 340)', min_value=0, max_value=340, step=1, value=0)
@@ -40,5 +40,5 @@ if st.button('Predict'):
     prediction = saved_model.predict(scaled_input)
 
     # Display the prediction
-    st.write(f'Predicted Admission Chance: {np.round(prediction[0], 2)}')
+    st.write(f'Predicted Admission Chance: {np.round(prediction[0], 4)*100}')
 
