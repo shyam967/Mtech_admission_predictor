@@ -2,6 +2,13 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import pickle
+import time
+
+# Load the saved scaler and model
+with open("graduate_adm_scalar.pkl", "rb") as f:
+    saved_scalar = pickle.load(f)
+with open("graduate_adm_model.pkl", 'rb') as f:
+    saved_model = pickle.load(f)
 
 # Hide the Streamlit menu and footer
 hide_streamlit_style = """
@@ -11,12 +18,6 @@ footer {visibility: hidden;}
 </style>
 """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
-
-# Load the saved scaler and model
-with open("graduate_adm_scalar.pkl", "rb") as f:
-    saved_scalar = pickle.load(f)
-with open("graduate_adm_model.pkl", 'rb') as f:
-    saved_model = pickle.load(f)
 
 st.title('Graduate Admission Predictor')
 st.write("""
@@ -43,6 +44,17 @@ research = 1 if research == 'Yes' else 0
 
 # Create a button for prediction
 if st.sidebar.button('Predict'):
+    # Placeholder for the loading message
+    loading_message = st.empty()
+    loading_message.info('Analyzing data and predicting...')
+
+    # Simulate a delay for processing
+    time.sleep(3)
+
+    # Remove the loading message
+    loading_message.empty()
+
+    # Prepare the input data
     data = {
         'GRE Score': gre,
         'TOEFL Score': toefl,
