@@ -10,20 +10,11 @@ with open("graduate_adm_scalar.pkl", "rb") as f:
 with open("graduate_adm_model.pkl", 'rb') as f:
     saved_model = pickle.load(f)
 
-# Hide the Streamlit menu and footer
-hide_streamlit_style = """
-<style>
-#MainMenu {visibility: hidden;}
-footer {visibility: hidden;}
-</style>
-"""
-st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+# Set page layout to center-aligned text
+st.markdown("<h1 style='text-align: center;'>Graduate Admission Predictor</h1>", unsafe_allow_html=True)
 
-st.title('Graduate Admission Predictor')
-st.write("""
-    This application predicts the chance of a student's admission to graduate school based on various parameters.
-    Fill in the details below and click 'Predict' to see the results.
-""")
+# Description
+st.markdown("<p style='text-align: center;'>This application predicts the chance of a student's admission to graduate school based on various parameters. Fill in the details below and click 'Predict' to see the results.</p>", unsafe_allow_html=True)
 
 st.sidebar.header('User Input Parameters')
 st.sidebar.write("""
