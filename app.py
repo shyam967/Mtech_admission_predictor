@@ -4,6 +4,15 @@ import numpy as np
 import pickle
 import time
 
+# Hide the Streamlit menu and footer
+hide_streamlit_style = """
+<style>
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+</style>
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 # Load the saved scaler and model
 with open("graduate_adm_scalar.pkl", "rb") as f:
     saved_scalar = pickle.load(f)
