@@ -30,7 +30,7 @@ st.markdown("""
 
 # Top Navigation Menu
 st.markdown("<h1 style='text-align: center;'>Graduate Admission Predictor</h1>", unsafe_allow_html=True)
-#st.markdown("<p style='text-align: center;'>This application predicts the chance of a student's admission to graduate school based on various parameters. Fill in the details below and click 'Predict' to see the results.</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center;'>This application predicts the chance of a student's admission to graduate school based on various parameters. Fill in the details below and click 'Predict' to see the results.</p>", unsafe_allow_html=True)
 
 # Create a container for the navigation buttons
 with st.container():
@@ -58,7 +58,7 @@ else:
 
 # Home Page
 if menu == "Home":
-    st.markdown("<p style='text-align: center;'>This application predicts the chance of a student's admission to graduate school based on various parameters. Fill in the details below and click 'Predict' to see the results.</p>", unsafe_allow_html=True)
+    #st.markdown("<p style='text-align: center;'>This application predicts the chance of a student's admission to graduate school based on various parameters. Fill in the details below and click 'Predict' to see the results.</p>", unsafe_allow_html=True)
     
     st.header('User Input Parameters')
     st.write("""
