@@ -98,7 +98,7 @@ if menu == "Home":
 
         # Display the prediction
         st.subheader('Prediction')
-        st.markdown(f"<div style='text-align: center;'>Your predicted admission chance is: {np.round(prediction[0] * 100, 2)}</div>", unsafe_allow_html=True)
+        st.markdown(f"<div style='text-align: center;'>Your predicted admission chance is:  {np.round(prediction[0] * 100, 2)}%</div>", unsafe_allow_html=True)
 
 # Project Details Page
 elif menu == "Project Details":
