@@ -19,50 +19,6 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# Mode Selection
-mode = st.selectbox('Choose Mode', ['Light', 'Dark', 'System'])
-
-# Apply mode (simple simulation of different styles)
-if mode == 'Dark':
-    st.markdown("""
-        <style>
-        body {
-            background-color: #333;
-            color: white;
-        }
-        .stButton > button {
-            background-color: #555;
-            color: white;
-        }
-        </style>
-        """, unsafe_allow_html=True)
-elif mode == 'Light':
-    st.markdown("""
-        <style>
-        body {
-            background-color: #FFF;
-            color: black;
-        }
-        .stButton > button {
-            background-color: #EEE;
-            color: black;
-        }
-        </style>
-        """, unsafe_allow_html=True)
-elif mode == 'System':
-    st.markdown("""
-        <style>
-        body {
-            background-color: #F0F0F0;
-            color: black;
-        }
-        .stButton > button {
-            background-color: #DDD;
-            color: black;
-        }
-        </style>
-        """, unsafe_allow_html=True)
-
 # Top Navigation Menu
 st.markdown("<h1 style='text-align: center;'>Graduate Admission Predictor</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align: center;'>This application predicts the chance of a student's admission to graduate school based on various parameters. Fill in the details below and click 'Predict' to see the results.</p>", unsafe_allow_html=True)
