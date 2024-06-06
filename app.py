@@ -19,38 +19,66 @@ with open("graduate_adm_scalar.pkl", "rb") as f:
 with open("graduate_adm_model.pkl", 'rb') as f:
     saved_model = pickle.load(f)
 
-# Set page layout to center-aligned text
-st.markdown("<h1 style='text-align: center;'>Graduate Admission Predictor</h1>", unsafe_allow_html=True)
+# Custom CSS to align buttons horizontally
+st.markdown("""
+    <style>
+    .horizontal-buttons > button {
+        margin-right: 10px;
+    }
+    </style>
+    """, unsafe_allow_html=True)
 
-# Sidebar menu
-menu = st.sidebar.radio(
-    "Menu",
-    ("Home", "Project Details", "Input Explanation", "About")
-)
+# Top Navigation Menu
+st.markdown("<h1 style='text-align: center;'>Graduate Admission Predictor</h1>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center;'>This application predicts the chance of a student's admission to graduate school based on various parameters. Fill in the details below and click 'Predict' to see the results.</p>", unsafe_allow_html=True)
+
+# Create a container for the navigation buttons
+with st.container():
+    col1, col2, col3, col4 = st.columns(4)
+    with col1:
+        home = st.button("Home")
+    with col2:
+        project_details = st.button("Project Details")
+    with col3:
+        input_explanation = st.button("Input Explanation")
+    with col4:
+        about = st.button("About")
+
+# Determine which button was clicked
+if home:
+    menu = "Home"
+elif project_details:
+    menu = "Project Details"
+elif input_explanation:
+    menu = "Input Explanation"
+elif about:
+    menu = "About"
+else:
+    menu = "Home"
 
 # Home Page
 if menu == "Home":
     st.markdown("<p style='text-align: center;'>This application predicts the chance of a student's admission to graduate school based on various parameters. Fill in the details below and click 'Predict' to see the results.</p>", unsafe_allow_html=True)
     
-    st.sidebar.header('User Input Parameters')
-    st.sidebar.write("""
+    st.header('User Input Parameters')
+    st.write("""
         Please input the following parameters:
     """)
 
     # Create input fields without predefined values
-    gre = st.sidebar.number_input('GRE Score (0 to 340)', min_value=0, max_value=340, step=1, value=0)
-    toefl = st.sidebar.number_input('TOEFL Score (0 to 120)', min_value=0, max_value=120, step=1, value=0)
-    university_rating = st.sidebar.selectbox('University Rating (1 to 5)', [1, 2, 3, 4, 5], index=0)
-    sop = st.sidebar.number_input('Statement of Purpose (1.0 to 5.0)', min_value=1.0, max_value=5.0, step=0.1, value=1.0)
-    lor = st.sidebar.number_input('Letter of Recommendation Strength (1.0 to 5.0)', min_value=1.0, max_value=5.0, step=0.1, value=1.0)
-    cgpa = st.sidebar.number_input('CGPA (1.00 to 10.00)', min_value=1.00, max_value=10.00, step=0.01, value=1.00)
-    research = st.sidebar.selectbox('Research Experience', ['No', 'Yes'])
+    gre = st.number_input('GRE Score (0 to 340)', min_value=0, max_value=340, step=1, value=0)
+    toefl = st.number_input('TOEFL Score (0 to 120)', min_value=0, max_value=120, step=1, value=0)
+    university_rating = st.selectbox('University Rating (1 to 5)', [1, 2, 3, 4, 5], index=0)
+    sop = st.number_input('Statement of Purpose (1.0 to 5.0)', min_value=1.0, max_value=5.0, step=0.1, value=1.0)
+    lor = st.number_input('Letter of Recommendation Strength (1.0 to 5.0)', min_value=1.0, max_value=5.0, step=0.1, value=1.0)
+    cgpa = st.number_input('CGPA (1.00 to 10.00)', min_value=1.00, max_value=10.00, step=0.01, value=1.00)
+    research = st.selectbox('Research Experience', ['No', 'Yes'])
 
     # Convert 'Yes'/'No' to 1/0
     research = 1 if research == 'Yes' else 0
 
     # Create a button for prediction
-    if st.sidebar.button('Predict'):
+    if st.button('Predict'):
         # Placeholder for the loading message
         loading_message = st.empty()
         loading_message.info('Analyzing data and predicting...')
