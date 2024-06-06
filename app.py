@@ -50,7 +50,7 @@ else:
 
 # Home Page
 if menu == "Home":
-    st.markdown("<p style='text-align: center;'>This application predicts the chance of a student's admission to graduate school based on various parameters. Fill in the details below and click 'Predict' to see the results.</p>", unsafe_allow_html=True)
+    #st.markdown("<p style='text-align: center;'>This application predicts the chance of a student's admission to graduate school based on various parameters. Fill in the details below and click 'Predict' to see the results.</p>", unsafe_allow_html=True)
     
     st.header('User Input Parameters')
     st.write("""
@@ -98,7 +98,7 @@ if menu == "Home":
 
         # Display the prediction
         st.subheader('Prediction')
-        st.markdown(f"<div style='text-align: center;'>Your predicted admission chance is: **{np.round(prediction[0] * 100, 2)}%**</div>", unsafe_allow_html=True)
+        st.markdown(f"<div style='text-align: center;'>Your predicted admission chance is: {np.round(prediction[0] * 100, 2)}</div>", unsafe_allow_html=True)
 
 # Project Details Page
 elif menu == "Project Details":
