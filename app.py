@@ -27,8 +27,10 @@ st.markdown("""
     .block-container {
         padding: 0 2rem;
     }
+    #MainMenu {visibility: hidden;}
     </style>
     """, unsafe_allow_html=True)
+
 
 # Top Navigation Menu
 st.markdown("<h1>Graduate Admission Predictor</h1>", unsafe_allow_html=True)
