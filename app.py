@@ -28,8 +28,13 @@ st.markdown("""
         padding: 0 2rem;
     }
     #MainMenu {visibility: hidden;}
+    h1 {
+        margin-top: 0;
+        padding-top: 1rem;
+    }
     </style>
     """, unsafe_allow_html=True)
+
 
 
 # Top Navigation Menu
