@@ -4,6 +4,9 @@ import numpy as np
 import pickle
 import time
 
+# Set the page layout to wide
+st.set_page_config(layout="wide")
+
 # Load the saved scaler and model
 with open("graduate_adm_scalar.pkl", "rb") as f:
     saved_scalar = pickle.load(f)
@@ -13,9 +16,23 @@ with open("graduate_adm_model.pkl", 'rb') as f:
 # Load the colleges data
 colleges_df = pd.read_csv('mtech_colleges.csv')
 
+# Add custom CSS for full screen and alignment
+st.markdown("""
+    <style>
+    .container {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    .block-container {
+        padding: 0 2rem;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
 # Top Navigation Menu
-st.markdown("<h1 style='text-align: center;'>Graduate Admission Predictor</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center;'>This application predicts the chance of a student's admission to graduate school based on various parameters. Fill in the details below and click 'Predict' to see the results.</p>", unsafe_allow_html=True)
+st.markdown("<h1>Graduate Admission Predictor</h1>", unsafe_allow_html=True)
+st.markdown("<p>This application predicts the chance of a student's admission to graduate school based on various parameters. Fill in the details below and click 'Predict' to see the results.</p>", unsafe_allow_html=True)
 
 # Layout with two columns: left for input, right for results
 col1, col2 = st.columns(2)
@@ -67,7 +84,7 @@ with col1:
         # Display the prediction
         with col2:
             st.subheader('Prediction')
-            st.markdown(f"<div style='text-align: center;'>Your predicted admission chance is: {predicted_percentage}%</div>", unsafe_allow_html=True)
+            st.markdown(f"Your predicted admission chance is: {predicted_percentage}%")
             
             st.subheader('Recommended Universities')
             # Filter universities based on the predicted admission chance
