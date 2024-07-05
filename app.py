@@ -28,14 +28,14 @@ st.markdown("""
         padding: 0 2rem;
     }
     #MainMenu {visibility: hidden;}
+    header {visibility: hidden;}
+    .css-1d391kg {padding-top: 4rem;}  /* Adjust this value if needed */
     h1 {
         margin-top: 0;
         padding-top: 1rem;
     }
     </style>
     """, unsafe_allow_html=True)
-
-
 
 # Top Navigation Menu
 st.markdown("<h1>Graduate Admission Predictor</h1>", unsafe_allow_html=True)
