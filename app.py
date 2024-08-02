@@ -30,21 +30,41 @@ st.markdown("""
     #MainMenu {visibility: hidden;}
     header {visibility: hidden;}
     .css-1d391kg {padding-top: 4rem;}  /* Adjust this value if needed */
-    h1 {
+    .center-text {
+        text-align: center;
+    }
+    .title {
+        font-size: 2.5em;
+        color: #4CAF50;
+        text-align: center;
         margin-top: 0;
         padding-top: 1rem;
+    }
+    .description {
+        text-align: center;
+        font-size: 1.2em;
+        margin-bottom: 2rem;
+    }
+    .box {
+        border: 2px solid #4CAF50;
+        border-radius: 10px;
+        padding: 20px;
+        background-color: #f9f9f9;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
     }
     </style>
     """, unsafe_allow_html=True)
 
 # Top Navigation Menu
-st.markdown("<h1>Graduate Admission Predictor</h1>", unsafe_allow_html=True)
-st.markdown("<p>This application predicts the chance of a student's admission to graduate school based on various parameters. Fill in the details below and click 'Predict' to see the results.</p>", unsafe_allow_html=True)
+st.markdown("<h1 class='title'>Graduate Admission Predictor</h1>", unsafe_allow_html=True)
+st.markdown("<p class='description'>This application predicts the chance of a student's admission to graduate school based on various parameters. Fill in the details below and click 'Predict' to see the results.</p>", unsafe_allow_html=True)
 
 # Layout with two columns: left for input, right for results
 col1, col2 = st.columns(2)
 
 with col1:
+    st.markdown("<div class='box'>", unsafe_allow_html=True)
     st.header('User Input Parameters')
     st.write("Please input the following parameters:")
     
@@ -90,9 +110,12 @@ with col1:
 
         # Display the prediction
         with col2:
+            st.markdown("<div class='box'>", unsafe_allow_html=True)
             st.subheader('Prediction')
             st.markdown(f"Your predicted admission chance is: {predicted_percentage}%")
+            st.markdown("</div>", unsafe_allow_html=True)
             
+            st.markdown("<div class='box'>", unsafe_allow_html=True)
             st.subheader('Recommended Universities')
             # Filter universities based on the predicted admission chance
             recommended_colleges = colleges_df[colleges_df['Cutoff Percentage'] <= predicted_percentage]
@@ -103,3 +126,5 @@ with col1:
                     st.write("- " + row['College Name'])
             else:
                 st.write("Unfortunately, there are no universities that match your predicted admission chances.")
+            st.markdown("</div>", unsafe_allow_html=True)
+    st.markdown("</div>", unsafe_allow_html=True)
